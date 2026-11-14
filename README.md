@@ -1,5 +1,11 @@
 # OutlookToGoogleSync
 
+[![License: MIT](https://img.shields.io/github/license/sensboston/OutlookToGoogleSync?style=flat-square)](LICENSE)
+![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6?style=flat-square&logo=windows)
+![Outlook: Classic Desktop](https://img.shields.io/badge/Outlook-Classic%20Desktop-0078D4?style=flat-square)
+![.NET Framework: 4.8](https://img.shields.io/badge/.NET%20Framework-4.8-512BD4?style=flat-square&logo=dotnet)
+![GitHub last commit](https://img.shields.io/github/last-commit/sensboston/OutlookToGoogleSync?style=flat-square)
+
 A lightweight, 100% private Windows VSTO Add-in for **Classic Microsoft Outlook** that automatically synchronizes calendar events and meeting invitations directly to **Google Calendar** (and consequently to **Samsung Calendar** and Android home-screen widgets) without third-party cloud relays.
 
 ---
@@ -33,18 +39,12 @@ If you use desktop Outlook with **IMAP accounts** (personal domains, ISP email, 
 
 ---
 
-## Step-by-Step Setup Guide
+## File Locations & Architecture
 
-### Step 1: Configure Google Cloud OAuth Credentials
+All runtime configuration, OAuth tokens, and logs are stored locally in your Windows user profile directory (never inside the repository or compiled binaries):
 
-Because this is a self-hosted personal bridge, you create your own free Google Cloud OAuth client so your data never touches someone else's app.
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/) and create a new project (e.g., `OutlookCalendarSync`).
-2. Navigate to **APIs & Services → Library**, search for **Google Calendar API**, and click **Enable**.
-3. Open **Google Auth Platform** (or *OAuth consent screen*):
-   * **Branding:** Fill in *App name*, *User support email*, and *Developer contact email*. Under *App domain*, enter your website or placeholder HTTPS URLs (e.g., `https://example.com`) and add the domain to *Authorized domains*. **Do not upload an App logo** (uploading a logo triggers mandatory Google app review). Click **Save**.
-   * **Audience:** Select **External**, then click **Publish App → Confirm** to switch the status from *Testing* to **In production**. *(Crucial: Apps left in "Testing" expire OAuth refresh tokens every 7 days; "In production" keeps your token valid indefinitely without requiring Google verification for personal use under 100 users).*
-4. Go to **Clients** (or *Credentials*) → **Create Client → Desktop app**, give it a name, and click **Create**.
-5. Download the generated JSON file, rename it to `credentials.json`, and place it in:
-   ```text
-   %AppData%\OutlookToGoogleSync\credentials.json
+```text
+%AppData%\OutlookToGoogleSync\
+├── credentials.json   # Your Google Cloud OAuth 2.0 Desktop Client secret (you place this here)
+├── token.json\        # Auto-generated folder storing your persistent OAuth refresh token
+└── sync.log           # Execution, folder hook, and Google Calendar API sync logs
