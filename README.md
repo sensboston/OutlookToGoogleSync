@@ -1,10 +1,10 @@
 # OutlookToGoogleSync
 
-[![License: MIT](https://img.shields.io/github/license/sensboston/OutlookToGoogleSync?style=flat-square)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 ![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6?style=flat-square&logo=windows)
 ![Outlook: Classic Desktop](https://img.shields.io/badge/Outlook-Classic%20Desktop-0078D4?style=flat-square)
 ![.NET Framework: 4.8](https://img.shields.io/badge/.NET%20Framework-4.8-512BD4?style=flat-square&logo=dotnet)
-![GitHub last commit](https://img.shields.io/github/last-commit/sensboston/OutlookToGoogleSync?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/sensboston/OutlookToGoogleSync/master?style=flat-square)
 
 A lightweight, 100% private Windows VSTO Add-in for **Classic Microsoft Outlook** that automatically synchronizes calendar events and meeting invitations directly to **Google Calendar** (and consequently to **Samsung Calendar** and Android home-screen widgets) without third-party cloud relays.
 
